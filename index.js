@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
+app.use(express.json());  
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -27,7 +29,7 @@ app.post('/', function (req, res){
     if (req.query.u != '3e835487dc4ee6ebf5edfde70')
     	return res.end('Wrong key')
 
-    console.log(req.mandrill_events)
+    console.log(req.body.mandrill_events)
     	
 
     res.writeHead(200, {'Content-Type': 'text/html'});
