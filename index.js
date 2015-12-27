@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res){
     console.log('POST /');
-    console.log(req.query.u);
+    console.log(req.query);
     //console.log(req);
 
     res.writeHead(200, {'Content-Type': 'text/html'});
