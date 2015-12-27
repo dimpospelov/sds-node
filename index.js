@@ -29,7 +29,6 @@ app.get('/', function (req, res) {
     //console.log(req);
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end('Get request received');
-
 });
 
 app.post('/', function (req, res){
