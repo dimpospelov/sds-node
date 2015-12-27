@@ -27,12 +27,10 @@ app.post('/', function (req, res){
     if (req.query.u != '3e835487dc4ee6ebf5edfde70')
     	return res.end('Wrong key');
 
-    var mandrill_events = req.body.mandrill_events;
+    var mandrill_events = JSON.parse(req.body.mandrill_events);
     console.log(mandrill_events);
+    console.log(mandrill_events['msg']);
 
-    var mandrill_events = JSON.parse(mandrill_events);
-    console.log(mandrill_events);
-    console.log(mandrill_events.event);
     	
 
     res.writeHead(200, {'Content-Type': 'text/html'});
