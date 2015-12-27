@@ -25,14 +25,14 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    console.log('GET /');
+    //console.log('GET /');
     //console.log(req);
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('Get request received');
+    res.end();
 });
 
 app.post('/', function (req, res){
-    console.log('POST /');
+    //console.log('POST /');
 
     if (req.query.u != '3e835487dc4ee6ebf5edfde70')
     	return res.end('Wrong key');
@@ -49,14 +49,14 @@ app.post('/', function (req, res){
 			api.call('lists', 'subscribe', { id: mailchimp_list_id, email: { email: email_address }, double_optin: false}, function (error, data) {
 			    if (error)
 			        console.log(error.message);
-			    else
-			        console.log(JSON.stringify(data)); // Do something with your data!
+			    //else
+			        //console.log(JSON.stringify(data)); 
 
 				api.call('lists', 'unsubscribe', { id: mailchimp_list_id, email: { email: email_address }}, function (error, data) {
 				    if (error)
 				        console.log(error.message);
 				    else
-				        console.log(JSON.stringify(data)); // Do something with your data!
+				        console.log(email_address+' unsubscribed');
 				});
 
 			});
@@ -64,7 +64,7 @@ app.post('/', function (req, res){
 	}    	
 
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('Post request received');
+    res.end();
 });
 
 app.listen(app.get('port'), function() {
