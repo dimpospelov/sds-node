@@ -18,19 +18,19 @@ app.get('/', function (req, res) {
 
 
     console.log('GET /')
-    console.log(req);
+    //console.log(req);
     res.writeHead(200, {'Content-Type': 'text/html'});
-    //res.end('req');
+    res.end('Get request received');
 
 });
 
 app.post('/', function (req, res){
     console.log('POST /');
-    console.log(req.path);
-    console.log(req);
+    console.log(req.query.u);
+    //console.log(req);
 
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('req');
+    res.end('Post request received');
 });
 
 app.listen(app.get('port'), function() {
