@@ -27,7 +27,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res){
     console.log('POST /');
 
-    if (req.query.u !- 'key')
+    if (req.query.u != 'key')
     	return res.end('Wrong key')
     	
 
