@@ -27,7 +27,7 @@ app.post('/', function (req, res){
     if (req.query.u != '3e835487dc4ee6ebf5edfde70')
     	return res.end('Wrong key')
 
-    console.log(req.mandrill_events)
+    console.log(req['0']['event'])
     	
 
     res.writeHead(200, {'Content-Type': 'text/html'});
