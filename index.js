@@ -11,18 +11,26 @@ app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
   //response.render('pages/index');
-  if (req.query.u != 'key')
-  	return res.end(':(\n') 
+ //  if (req.query.u != 'key')
+ //  	return res.end(':(') 
 
-  return res.end(':)\n') 
+	// res.end(':)') 
+
+
+    console.log('GET /')
+    console.log(req);
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    //res.end('req');
 
 });
 
-app.post('/', function(req, res){
+app.post('/', function (req, res){
     console.log('POST /');
-    console.dir(req.body);
+    console.log(req.path);
+    console.log(req);
+
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('thanks');
+    res.end('req');
 });
 
 app.listen(app.get('port'), function() {
