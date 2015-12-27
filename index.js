@@ -43,6 +43,7 @@ app.post('/', function (req, res){
     	if (mandrill_events[i]['type'] == 'blacklist' && mandrill_events[i]['action'] == 'add') {
     		//console.log(mandrill_events[i]['reject']['reason']);
     		//console.log(mandrill_events[i]['reject']['email']);
+    		var reason = mandrill_events[i]['reject']['reason'];
     		var email_address = mandrill_events[i]['reject']['email'];
 
 			api.call('lists', 'subscribe', { id: mailchimp_list_id, email: { email: email_address }, double_optin: false}, function (error, data) {
@@ -55,7 +56,8 @@ app.post('/', function (req, res){
 				    if (error)
 				        console.log(error.message);
 				    else
-				        console.log(email_address+' unsubscribed');
+				        console.log('Unsubscribed ['+mandrill_events[i]['reject']['reason']+']');
+				        console.log(email_address);
 				});
 
 			});
