@@ -30,12 +30,14 @@ app.post('/', function (req, res){
     var mandrill_events = JSON.parse(req.body.mandrill_events);
 
     for (var i=0; i<mandrill_events.length; i++) {
-    	console.log(i);
-    	console.log(mandrill_events[i]);
-	}
-    //console.log(mandrill_events['event']);
+    	if (mandrill_events[i]['type'] == 'blacklist') {
+    		console.log(mandrill_events[i]['reject']['reason']);
+    		console.log(mandrill_events[i]['reject']['email']);
+    	}
 
-    	
+
+
+	}    	
 
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end('Post request received');
