@@ -1,6 +1,6 @@
 {
   "name": "node-js-sds",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "Node.js SDS",
   "main": "index.js",
   "scripts": {
