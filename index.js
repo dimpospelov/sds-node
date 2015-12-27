@@ -10,13 +10,6 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-  //response.render('pages/index');
- //  if (req.query.u != 'key')
- //  	return res.end(':(') 
-
-	// res.end(':)') 
-
-
     console.log('GET /')
     //console.log(req);
     res.writeHead(200, {'Content-Type': 'text/html'});
@@ -29,6 +22,8 @@ app.post('/', function (req, res){
 
     if (req.query.u != 'key')
     	return res.end('Wrong key')
+
+    console.log(req.query)
     	
 
     res.writeHead(200, {'Content-Type': 'text/html'});
