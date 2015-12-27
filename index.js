@@ -24,7 +24,7 @@ app.post('/', function (req, res){
     if (req.query.u != key)
     	return res.end('Wrong key')
 
-    console.log(req.query)
+    console.log(req.body.event)
     	
 
     res.writeHead(200, {'Content-Type': 'text/html'});
