@@ -29,7 +29,7 @@ app.post('/', function (req, res){
 
     var mandrill_events = JSON.parse(req.body.mandrill_events);
     console.log(mandrill_events);
-    console.log(mandrill_events['msg']);
+    console.log(mandrill_events.body.event);
 
     	
 
