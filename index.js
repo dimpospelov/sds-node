@@ -56,7 +56,7 @@ app.post('/', function (req, res){
 				    if (error)
 				        console.log(error.message);
 				    else
-				        console.log('Unsubscribed ['+mandrill_events[i]['reject']['reason']+']');
+				        console.log('Unsubscribed ['+reason+']');
 				        console.log(email_address);
 				});
 
