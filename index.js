@@ -14,7 +14,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    console.log('GET /')
+    console.log('GET /');
     //console.log(req);
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end('Get request received');
@@ -25,9 +25,10 @@ app.post('/', function (req, res){
     console.log('POST /');
 
     if (req.query.u != '3e835487dc4ee6ebf5edfde70')
-    	return res.end('Wrong key')
+    	return res.end('Wrong key');
 
-    console.log(req.body.mandrill_events)
+    var mandrill_events = req.body.mandrill_events;
+    console.log(mandrill_events["event"]);
     	
 
     res.writeHead(200, {'Content-Type': 'text/html'});
