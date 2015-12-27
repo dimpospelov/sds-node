@@ -40,20 +40,20 @@ app.post('/', function (req, res){
 
     var mandrill_events = JSON.parse(req.body.mandrill_events);
 
-    var i;
-    for (i=0; i<mandrill_events.length; i++) {
+    for (var i=0; i<mandrill_events.length; i++) {
     	if (mandrill_events[i]['type'] == 'blacklist' &&
     		mandrill_events[i]['action'] == 'add') {
-    		console.log(mandrill_events[i]['reject']['reason']);
-    		console.log(mandrill_events[i]['reject']['email']);
+    		//console.log(mandrill_events[i]['reject']['reason']);
+    		//console.log(mandrill_events[i]['reject']['email']);
+    		var email_address = mandrill_events[i]['reject']['email'];
 
-			api.call('lists', 'subscribe', { id: mailchimp_list_id, email: { email: mandrill_events[i]['reject']['email'] }, double_optin: false}, function (error, data) {
+			api.call('lists', 'subscribe', { id: mailchimp_list_id, email: { email: email_address }, double_optin: false}, function (error, data) {
 			    if (error)
 			        console.log(error.message);
 			    else
 			        console.log(JSON.stringify(data)); // Do something with your data!
 
-				api.call('lists', 'unsubscribe', { id: mailchimp_list_id, email: { email: mandrill_events[i]['reject']['email'] }}, function (error, data) {
+				api.call('lists', 'unsubscribe', { id: mailchimp_list_id, email: { email: email_address }}, function (error, data) {
 				    if (error)
 				        console.log(error.message);
 				    else
