@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
-var key = '3e835487dc4ee6ebf5edfde70';
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -21,7 +24,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res){
     console.log('POST /');
 
-    if (req.query.u != key)
+    if (req.query.u != '3e835487dc4ee6ebf5edfde70')
     	return res.end('Wrong key')
 
     console.log(req.body.event)
