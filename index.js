@@ -28,7 +28,10 @@ app.post('/', function (req, res){
     	return res.end('Wrong key');
 
     var mandrill_events = req.body.mandrill_events;
-    console.log(mandrill_events["0"]["event"]);
+    console.log(mandrill_events);
+
+    var mandrill_events = JSON.parse(mandrill_events);
+    console.log(mandrill_events);
     console.log(mandrill_events.event);
     	
 
