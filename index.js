@@ -40,8 +40,7 @@ app.post('/', function (req, res){
     var mandrill_events = JSON.parse(req.body.mandrill_events);
 
     for (var i=0; i<mandrill_events.length; i++) {
-    	if (mandrill_events[i]['type'] == 'blacklist' &&
-    		mandrill_events[i]['action'] == 'add') {
+    	if (mandrill_events[i]['type'] == 'blacklist' && mandrill_events[i]['action'] == 'add') {
     		//console.log(mandrill_events[i]['reject']['reason']);
     		//console.log(mandrill_events[i]['reject']['email']);
     		var email_address = mandrill_events[i]['reject']['email'];
